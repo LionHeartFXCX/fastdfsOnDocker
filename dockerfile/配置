@@ -1,0 +1,43 @@
+Storage配置:
+
+/home/fastdfs/fastdfs-5.05/conf/storage.conf的配置
+
+base_path=/home/fastdfs_file
+store_path0=/home/fastdfs_file
+tracker_server=127.0.0.1:22122
+
+Client.conf
+
+base_path=/home/fastdfs_file
+tracker_server=127.0.0.1:22122
+
+
+
+/usr/local/nginx/conf/nginx.conf的配置
+
+server {
+    listen       8888;
+    server_name  localhost;
+
+    location /M00 {
+        root /home/fastdfs_file/data;
+        ngx_fastdfs_module;
+    }
+    ......
+}
+
+做一个软链接
+ln -s /home/fastdfs_file/data /home/fastdfs_file/data/M00
+
+修改文件配置 /etc/fdfs/mod_fastdfs.conf
+
+base_path=/home/fastdfs_file
+tracker_server=127.0.0.1:22122
+store_path0=/home/fastdfs_file
+url_have_group_name = true
+
+Tracker配置
+
+/home/fastdfs/fastdfs-5.05/conf/tracker.conf的配置
+
+base_path=/home/fastdfs_file
