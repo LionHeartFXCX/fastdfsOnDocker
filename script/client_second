@@ -1,0 +1,3 @@
+#!/bin/sh
+docker start client
+docker exec client fdfs_test /home/fastdfs/fastdfs-5.05/conf/client.conf upload /home/client/test.jpg
