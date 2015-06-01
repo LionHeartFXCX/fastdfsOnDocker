@@ -1,0 +1,20 @@
+#!/bin/sh
+mkdir -p /home/fastdfs/nginx_conf
+mkdir -p /home/fastdfs/client
+chmod +x client
+chmod +x client_second
+chmod +x tracker
+chmod +x tracker_second
+chmod +x storage
+chmod +x storage_second
+docker run -d --name trackerconfig tracker
+docker run -d --name storageconfig storage
+docker cp storageconfig:/home/fastdfs/fastdfs-5.05/conf /home/fastdfs
+mv /home/fastdfs/conf /home/fastdfs/fdfs_conf
+docker cp trackerconfig:/usr/local/nginx/conf /home/fastdfs/nginx_conf
+mv /home/fastdfs/nginx_conf/conf /home/fastdfs/nginx_conf/tracker
+docker cp storageconfig:/usr/local/nginx/conf /home/fastdfs/nginx_conf
+mv /home/fastdfs/nginx_conf/conf /home/fastdfs/nginx_conf/storage
+docker cp storageconfig:etc/fdfs /home/fastdfs
+mv /home/fastdfs/fdfs /home/fastdfs/etc_conf
+docker cp storageconfig:/home/fastdfs_file /home/fastdfs
