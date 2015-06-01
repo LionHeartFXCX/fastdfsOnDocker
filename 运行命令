@@ -1,0 +1,39 @@
+Tracker
+
+docker run -it --name tracker --net=host 
+-v /home/fastdfs/fdfs_conf:/home/fastdfs/fastdfs-5.05/conf/
+-v /home/fastdfs/nginx_conf/tracker:/usr/local/nginx/conf
+tracker 
+exit
+docker start tracker
+docker exec tracker fdfs_trackerd /home/fastdfs/fastdfs-5.05/conf/tracker.conf
+docker exec tracker /usr/local/nginx/sbin/nginx
+docker exec tracker cat /usr/local/nginx/logs/error.log
+docker exec tracker netstat -ant | grep 22122
+docker exec tracker cat /home/fastdfs_file/logs/trackerd.log
+
+
+Storage
+
+docker run -it --name storage --net=host 
+-v /home/fastdfs/fdfs_conf:/home/fastdfs/fastdfs-5.05/conf/
+-v /home/fastdfs/nginx_conf/storage:/usr/local/nginx/conf
+-v /home/fastdfs/etc_conf:/etc/fdfs
+storage
+exit
+docker start storage
+docker exec storage fdfs_storaged /home/fastdfs/fastdfs-5.05/conf/storage.conf
+docker exec storage /usr/local/nginx/sbin/nginx
+docker exec storage cat /usr/local/nginx/logs/error.log
+docker exec storage netstat -ant | grep 23000
+docker exec storage cat /home/fastdfs_file/logs/storaged.log
+
+
+Client
+
+docker run -it --name client --net=host 
+-v /home/fastdfs/client:/home/client
+storage
+exit
+docker start client
+docker exec client fdfs_test /home/fastdfs/fastdfs-5.05/conf/client.conf upload /home/client/test.jpg
