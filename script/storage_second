@@ -1,0 +1,7 @@
+#!/bin/sh
+docker start storage
+docker exec storage fdfs_storaged /home/fastdfs/fastdfs-5.05/conf/storage.conf
+docker exec storage /usr/local/nginx/sbin/nginx
+docker exec storage cat /usr/local/nginx/logs/error.log
+docker exec storage netstat -ant | grep 23000
+docker exec storage cat /home/fastdfs_file/logs/storaged.log
