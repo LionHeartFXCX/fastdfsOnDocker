@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -it --name tracker --net=host -v /home/fastdfs/fdfs_conf:/home/fastdfs/fastdfs-5.05/conf/ -v /home/fastdfs/nginx_conf/tracker:/usr/local/nginx/conf/ tracker
