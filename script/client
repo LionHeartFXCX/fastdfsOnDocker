@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -it --name client --net=host -v /home/fastdfs/client:/home/client storage
