@@ -4,12 +4,12 @@ Storage配置:
 
 base_path=/home/fastdfs_file
 store_path0=/home/fastdfs_file
-tracker_server=127.0.0.1:22122
+tracker_server=192.168.1.1:22122  此处为traker服务器的配置所在地
 
 Client.conf
 
 base_path=/home/fastdfs_file
-tracker_server=127.0.0.1:22122
+tracker_server=192.168.1.1:22122
 
 
 
