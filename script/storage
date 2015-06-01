@@ -1,0 +1,2 @@
+#!/bin/sh
+docker run -it --name storage --net=host -v /home/fastdfs/fdfs_conf:/home/fastdfs/fastdfs-5.05/conf/ -v /home/fastdfs/nginx_conf/storage:/usr/local/nginx/conf -v /home/fastdfs/etc_conf:/etc/fdfs storage
