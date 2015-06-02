@@ -1,7 +1,19 @@
 # fastdfsOnDocker
 该镜像主要是在ubuntu的基础镜像上部署了fastdfs文件系统的storage节点。
 
-fastdfs是一个开源的分布式文件系统，其主要分为tracker节点和storage节点，本镜像部署了storage节点，并在镜像内构建了一个nginx服务器，支持http服务。在docker的环境中，tracker节点部署在了与storage节点相同的服务器上。在构建服务前，需要更改其具体的配置文件。
+fastdfs是一个开源的分布式文件系统，其主要分为tracker节点和storage节点，本镜像部署了storage节点，并在镜像内构建了一个nginx服务器，支持http服务。在docker的环境中，tracker节点部署在了与storage节点相同的服务器上。在构建服务前，需要更改其具体的配置文件。在运行之前，请先下载如下文件：
+
+fastdfs-5.05.tar.gz
+
+libfastcommon-master.zip
+
+fastdfs-nginx-module-master.zip
+
+nginx-1.6.3.tar.gz
+
+ngx_cache_purge-2.3.tar.gz
+
+其中前三个压缩包可以在fastdfs的github上下载到，nginx能去官网下载，最后一个可以直接百度，注意下载最新的版本即2.3，否则会构建失败，然后在Dockerfile所在的目录下构建一个文件夹为file，将这些压缩包放置在file中。
 
 先运行语句
 
