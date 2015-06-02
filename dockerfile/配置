@@ -2,14 +2,14 @@ Storage配置:
 
 /home/fastdfs/fastdfs-5.05/conf/storage.conf的配置
 
-base_path=/home/fastdfs_file
-store_path0=/home/fastdfs_file
-tracker_server=192.168.1.1:22122  此处为traker服务器的配置所在地
+base_path=/home/fastdfs_file      修改存放文件的路径，该路径必须存在
+store_path0=/home/fastdfs_file    这是你的storage的文件放置路径
+tracker_server=192.168.1.1:22122  此处为traker服务器的ip地址，按照实际情况自己填写
 
 Client.conf
 
 base_path=/home/fastdfs_file
-tracker_server=192.168.1.1:22122
+tracker_server=192.168.1.1:22122  同上
 
 
 
@@ -32,9 +32,9 @@ ln -s /home/fastdfs_file/data /home/fastdfs_file/data/M00
 修改文件配置 /etc/fdfs/mod_fastdfs.conf
 
 base_path=/home/fastdfs_file
-tracker_server=127.0.0.1:22122
+tracker_server=127.0.0.1:22122   同上，写上tracker的ip
 store_path0=/home/fastdfs_file
-url_have_group_name = true
+url_have_group_name = true      此处必须设置为true，因为url中必须要有组名存在
 
 Tracker配置
 
