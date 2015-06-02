@@ -15,6 +15,10 @@ ngx_cache_purge-2.3.tar.gz
 
 其中前三个压缩包可以在fastdfs的github上下载到，nginx能去官网下载，最后一个可以直接百度，注意下载最新的版本即2.3，否则会构建失败，然后在Dockerfile所在的目录下构建一个文件夹为file，将这些压缩包放置在file中。
 
+下载完所有文件后，就可以构建镜像或者直接从dockerhub上pull镜像了，dockerhub上的镜像名称为fastdfs_tracker:complete以及fastdfs_storage:complete。如果直接pull下来镜像，那么不需要进行过多的配置，只需要修改tracker，storage节点的ip地址即可。如果是以dockerfile的方式构建镜像，那么你需要参考dockerfile中的配置文件已经说明文件来进行相应的配置。我所构建的镜像是部署在一台服务器上的tracker以及storage节点，如果你需要额外的配置，即配置在多台服务器上的storage节点，那么你可能需要安装pipework以让docker支持容器间的网络通信，具体的配置请参照该文档 http://wenku.baidu.com/link?url=7p3i2ev79UnCGAsbYX9iYO78PN8IAKpZdvU-VOxZRGCEqgyR8Nrvr129Dg8yTjGWAZNR945gLwf1Kv9DvJmaAMSCyxoZuop8d3qvYl1OdHy
+
+如下是每条语句的具体解释，你可以根据自己的要求来更改这些运行语句
+
 先运行语句
 
 docker run -d --name trackerconfig tracker
